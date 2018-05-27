@@ -6,6 +6,7 @@ This repository contains python based library to collect events from multiple pr
 # Installation
 
 ## Requirements
+- Python version 3.5
 - Install external python library pymysql by executing below command on terminal:
     - pip install pymysql
 - MysqlDb
@@ -20,6 +21,7 @@ This repository contains python based library to collect events from multiple pr
 - To demonstrate usage of event library, app.py creates a 'user-login' event with event rule 'login-failed' & event verb 'failed'.
 	- If a user login fails for 5 times within 10 minutes then event library capture & store this event details.
 - To test this, run this file 5 times within 10 minutes which will do the loging failure for 5 times. Hence, it satisfies the event rule 'login-failed'.
+	- python3.5 app.py
 - This module (app.py) also make a call to library's get_event_data() api which outputs the requsted event data.
 - If you want to create a new event with different rule on the fly, call the appropriate apis to do so.
 
