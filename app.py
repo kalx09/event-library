@@ -1,7 +1,7 @@
 from libevent.controller import EventController
 
 USER_LOGIN_FAILURE_RULE = {"event_rule_verb": "failed", "event_rule_name": "login-failed",
-                           "event_rule_no_of_attempts": 5, "event_rule_time_interval": 1}
+                           "event_rule_no_of_attempts": 5, "event_rule_time_interval": 10}
 
 
 def add_event_info(event_noun):

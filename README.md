@@ -16,18 +16,17 @@ This repository contains python based library to collect events from multiple pr
 # How to run
 
 ## app.py
-- app.py is a sample application which is using event library to create & capture events.
+- app.py is a sample application which uses event library to create & capture events.
 - To demonstrate usage of event library, app.py creates a 'user-login' event with event rule 'login-failed' & event verb 'failed'.
-- If a user login fails for 5 times within 10 minutes then event library stores this event data.
-- To test this, run this file 5 times within 10 minutes which will do the loging failure for 5 times. Hence,
-it shall satisfy the event rule.
-- This file also call get_event_data() which outputs the event data.
-- If you want to create a new event with different rule, call the appropriate apis to do so.
+	- If a user login fails for 5 times within 10 minutes then event library capture & store this event details.
+- To test this, run this file 5 times within 10 minutes which will do the loging failure for 5 times. Hence, it satisfies the event rule 'login-failed'.
+- This module (app.py) also make a call to library's get_event_data() api which outputs the requsted event data.
+- If you want to create a new event with different rule on the fly, call the appropriate apis to do so.
 
 # Documentation
-- Each module of event library is documented with python docstrings along with the required & optional arguments.
+- Each module of event library is documented with python docstrings along with the required & optional arguments, return type & exception thrown if any.
 - PEP8 coding standard is followed throughout the project.
 
 # Assumptions
-- Each event name (noun) is unique. For example, event db holds only one record with name 'user-login'.
+- Each event name (noun) needs to be unique. For example, event db can hold only one record with name 'user-login'. However, it can hold 'n' no of event data related to 'user-login'.
 - There needs to be a event rule for each event. For example, user login needs to be failed for atleast 5 times within 10 minutes in order to store it into the database.
