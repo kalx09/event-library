@@ -211,7 +211,6 @@ class EventDal:
             where_clause = "WHERE event_rule_id = %s" % EventDal.get_event_rule_id(event_rule_name=event_rule_name, event_rule_verb=event_rule_verb)
 
         result_set = db_obj.execute(EventDal.GET_EVENT_DATA % (where_clause, limit, offset))
-        print(result_set.row_count())
         if result_set.has_row():
             data_set = result_set.get_rows()
             for data_obj in data_set:

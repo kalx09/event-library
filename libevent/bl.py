@@ -26,7 +26,7 @@ class EventBl:
         if EventBl.__check_if_event_exist(event_noun):
             for key in cls.event_rule_keys:
                 if key in event_rule:
-                    print("EventBl | add_rule_to_event | The value of {} is {}".format(key, event_rule[key]))
+                    print("EventBl | add_rule_to_event '{}'| The value of {} is {}".format(event_noun, key, event_rule[key]))
                 else:
                     raise ValueError("Please provide value for %s" % key)
         else:
