@@ -14,7 +14,12 @@ class EventBl:
 
     @classmethod
     def add_event(cls, event_noun):
+        """
+        Creates a new event
 
+        :param event_noun: Name of the event [String, Required]
+        :return: void
+        """
         if EventBl.__check_if_event_exist(event_noun):
             print("EventBl | Event %s already exist's in db" % event_noun)
         else:
@@ -22,6 +27,18 @@ class EventBl:
 
     @classmethod
     def add_rule_to_event(cls, event_rule, event_noun):
+        """
+        Adds rule to the existing event
+
+        :param event_rule: A dictionary object with required values. [Dictionary, Required]
+                    event_rule_name: Name of the event rule. Eg., "login-failed" [String]
+                    event_rule_verb: Name of the event verb. Eg., "failed" [String]
+                    event_rule_no_of_attempts: Number of attempts or calls made to the specific event which helps to
+                                               determine when to save event data with event_rule_time_interval key[Integer]
+                    event_rule_time_interval: Time interval in minutes. [Integer]
+        :param event_noun: Name of the existing event name. [String, Required]
+        :return: void
+        """
 
         if EventBl.__check_if_event_exist(event_noun):
             for key in cls.event_rule_keys:
@@ -39,7 +56,13 @@ class EventBl:
             EventDal.add_rule_to_event(event_rule, event_noun)
 
     @staticmethod
-    def execute_event_rule(event_rule_name=None, event_rule_verb=None):
+    def execute_event_rule(event_rule_name, event_rule_verb):
+        """
+        Execute the event with the associated rule
+        :param event_rule_name: Name of the event rule [String, Required]
+        :param event_rule_verb: Name of the event verb [String, Required]
+        :return: void
+        """
         print("EventBl | Executing event rule")
         EventDal.add_execution_attempt(event_rule_name, event_rule_verb)
         EventBl.__check_and_store_json(event_rule_name, event_rule_verb)

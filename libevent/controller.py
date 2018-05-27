@@ -16,7 +16,7 @@ class EventController:
         """
         Creates a new event
 
-        :param event_noun: Name of the event [String, Optional]
+        :param event_noun: Name of the event [String, Required]
         :return: void
         :except: ValueError
         """
@@ -30,13 +30,13 @@ class EventController:
         """
         Adds rule to the existing event
 
-        :param event_rule: A dictionary object with required values. [Dictionary, required]
+        :param event_rule: A dictionary object with required values. [Dictionary, Required]
                     event_rule_name: Name of the event rule. Eg., "login-failed" [String]
                     event_rule_verb: Name of the event verb. Eg., "failed" [String]
                     event_rule_no_of_attempts: Number of attempts or calls made to the specific event which helps to
                                                determine when to save event data with event_rule_time_interval key[Integer]
                     event_rule_time_interval: Time interval in minutes. [Integer]
-        :param event_noun: Name of the existing event name. [String, required]
+        :param event_noun: Name of the existing event name. [String, Required]
         :return: void
         :except: ValueError
         """
@@ -49,8 +49,8 @@ class EventController:
     def execute_event_rule(self, event_rule_name=None, event_rule_verb=None):
         """
         Execute the event with the associated rule
-        :param event_rule_name: Name of the event rule [String, required]
-        :param event_rule_verb: Name of the event verb [String, required]
+        :param event_rule_name: Name of the event rule [String, Required]
+        :param event_rule_verb: Name of the event verb [String, Required]
         :return: void
         :except: ValueError
         """
