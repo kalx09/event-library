@@ -17,13 +17,16 @@ This repository contains python based library to collect events from multiple pr
 
 # How to run
 
-## app.py
+## Example usage (app.py)
 - app.py is a sample application which uses event library to create & capture events.
-- To demonstrate usage of event library, app.py creates a 'user-login' event with event rule 'login-failed' & event verb 'failed'.
-	- If a user login fails for 5 times within 10 minutes then event library capture & store this event details.
-- To test this, run this file 5 times with below command within 10 minutes which will do the login failure for 5 times. Hence, satisfying the event rule 'login-failed'.
+- To demonstrate usage of event library, app.py creates couple of events 
+	- Event noun 'user-login' & event verb 'failed' with below event rule.
+		- 'login-failed' - If a user login fails for 5 times within 10 minutes then event library capture & store this event details as a custom event ('login-failed-alert')
+	- Event noun 'content-access' & event verb 'success' with below event rule.
+		- 'access-success' - If content-access event is called for 5 times within 2 minutes then event library capture & store this event details as a custom event ('access-success-alert')
+- To test this, run this file 5 times with below command within 2 minutes which shall do the login failure & content access for 5 times respectively. Hence, satisfying their respective/precreated event rules.
 	- python3.5 app.py
-- This module (app.py) also make a call to library's get_event_data() api which outputs the requsted event data.
+- This module (app.py) also make a call to library's get_event_data() api which outputs the requested/filtered event data.
 - If you want to create a new event with different rule on the fly, call the appropriate apis to do so.
 
 # Documentation
@@ -31,5 +34,4 @@ This repository contains python based library to collect events from multiple pr
 - PEP8 coding standard is followed throughout the project.
 
 # Assumptions
-- Each event name (noun) needs to be unique. For example, event db can hold only one record with name 'user-login'. However, it can hold 'n' no of event data related to 'user-login'.
-- There needs to be a event rule for each event. For example, user login needs to be failed for atleast 5 times within 10 minutes in order to store it into the database.
+- Event library trigger's add event when a new rule is added for a particular defined noun and verb. If the precreated rule is matched then a custom event with pattern "rulename-alert" is saved into db. For example, a rule name "access-success" with 5 no of events in 2 minutes is matched for event noun ("content-access") & verb ("success") then event library shall store custom event name "access-success-alert" to db.
